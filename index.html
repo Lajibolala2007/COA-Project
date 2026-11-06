@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogicLab – Explore Digital Logic | Interactive Logic Gate Simulator</title>
+  <meta name="description" content="Explore and master digital logic gates through interactive real-time simulations, animated circuit diagrams, dynamic truth tables and Boolean expressions.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338BDF8'><path d='M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="LogicLab Home">
+        <div class="brand-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            <line x1="10" y1="10" x2="14" y2="14"></line>
+          </svg>
+        </div>
+        <span>Logic<span class="brand-title-accent">Lab</span></span>
+      </a>
+
+      <nav class="nav-links" id="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link active-nav">Home</a>
+        <a href="#explore-gates" class="nav-link">Explore Gates</a>
+        <a href="pages/compare.html" class="nav-link">Compare Gates</a>
+        <a href="pages/circuit-builder.html" class="nav-link">Circuit Builder</a>
+      </nav>
+
+      <div class="nav-right-actions">
+        <button type="button" class="btn-theme-toggle" id="theme-toggle-btn" aria-label="Toggle Theme Mode">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-moon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-pulse"></span>
+            <span>Virtual Digital Electronics Lab</span>
+          </div>
+
+          <h1 class="hero-title">
+            Explore the World of <br>
+            <span class="hero-title-highlight">Digital Logic</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Understand, experiment and visualise how digital logic gates transform binary inputs into outputs. Learn the fundamentals of digital electronics through interactive simulations.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#explore-gates" class="btn-primary">
+              <span>Explore Logic Gates</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="pages/and.html" class="btn-secondary">
+              <span>Start Experimenting</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- HERO VISUAL: Live Interactive Circuit -->
+        <div class="hero-visual-card">
+          <div class="hero-card-header">
+            <div class="hero-card-title">
+              <span class="status-dot"></span>
+              <span>INTERACTIVE AND GATE EXPERIMENT</span>
+            </div>
+            <span class="hero-hint-pill">Click Switches to Toggle</span>
+          </div>
+
+          <svg viewBox="0 0 500 230" class="hero-circuit-svg" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <filter id="heroCyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+              <filter id="heroGreenGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="5" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+              <radialGradient id="heroLedOnGrad" cx="40%" cy="35%" r="65%">
+                <stop offset="0%" stop-color="#86EFAC" />
+                <stop offset="35%" stop-color="#22C55E" />
+                <stop offset="85%" stop-color="#15803D" />
+                <stop offset="100%" stop-color="#052E16" />
+              </radialGradient>
+            </defs>
+
+            <!-- Grid markings -->
+            <g opacity="0.12">
+              <line x1="0" y1="50" x2="500" y2="50" stroke="#38BDF8" stroke-dasharray="3,6" />
+              <line x1="0" y1="115" x2="500" y2="115" stroke="#38BDF8" stroke-dasharray="3,6" />
+              <line x1="0" y1="180" x2="500" y2="180" stroke="#38BDF8" stroke-dasharray="3,6" />
+            </g>
+
+            <!-- Input A Wire -->
+            <path id="hero-wire-a" d="M 60 85 L 150 85" stroke="#38BDF8" stroke-width="5" stroke-linecap="round" filter="url(#heroCyanGlow)" />
+            <circle id="hero-pulse-a" r="4.5" fill="#FFFFFF">
+              <animateMotion path="M 60 85 L 150 85" dur="1.2s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Input B Wire -->
+            <path id="hero-wire-b" d="M 60 145 L 150 145" stroke="#38BDF8" stroke-width="5" stroke-linecap="round" filter="url(#heroCyanGlow)" />
+            <circle id="hero-pulse-b" r="4.5" fill="#FFFFFF">
+              <animateMotion path="M 60 145 L 150 145" dur="1.2s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- AND Gate Body -->
+            <g class="hero-gate-symbol" transform="translate(30, 0)">
+              <path d="M 120 70 L 175 70 A 45 45 0 0 1 175 160 L 120 160 Z" fill="#111C30" stroke="#38BDF8" stroke-width="3.5" stroke-linejoin="round" />
+              <text x="150" y="120" text-anchor="middle" fill="#94A3B8" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700">AND</text>
+            </g>
+
+            <!-- Output Wire -->
+            <path id="hero-wire-out" d="M 250 115 L 370 115" stroke="#22C55E" stroke-width="5" stroke-linecap="round" filter="url(#heroGreenGlow)" />
+            <circle id="hero-pulse-out" r="4.5" fill="#FFFFFF">
+              <animateMotion path="M 250 115 L 370 115" dur="1.0s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Output LED Indicator -->
+            <g transform="translate(390, 115)">
+              <circle cx="0" cy="0" r="26" fill="#1E293B" stroke="#475569" stroke-width="3" />
+              <circle cx="0" cy="0" r="20" fill="#0F172A" />
+              <circle id="hero-led" cx="0" cy="0" r="17" fill="url(#heroLedOnGrad)" filter="url(#heroGreenGlow)" />
+              <ellipse cx="-4" cy="-5" rx="5" ry="3" fill="#FFFFFF" opacity="0.8" />
+              <circle id="hero-led-glow" cx="0" cy="0" r="22" fill="none" stroke="#22C55E" stroke-width="2" opacity="0.6">
+                <animate attributeName="r" values="20;26;20" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
+              </circle>
+            </g>
+
+            <!-- Visual Wire Labels -->
+            <text x="50" y="78" text-anchor="end" fill="#94A3B8" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">A</text>
+            <text x="50" y="140" text-anchor="end" fill="#94A3B8" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">B</text>
+            <text x="310" y="105" text-anchor="middle" fill="#94A3B8" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">OUTPUT (Y)</text>
+          </svg>
+
+          <!-- Interactive Switch Controls for Hero -->
+          <div class="hero-controls-bar">
+            <div class="hero-switches-toggle-row">
+              <button type="button" class="hero-btn-switch switch-on" id="hero-switch-a" data-val="1">
+                <span>Switch A:</span>
+                <strong class="switch-val-text">1</strong>
+              </button>
+              <button type="button" class="hero-btn-switch switch-on" id="hero-switch-b" data-val="1">
+                <span>Switch B:</span>
+                <strong class="switch-val-text">1</strong>
+              </button>
+            </div>
+            <div class="hero-out-text text-green" id="hero-output-val">
+              OUTPUT: 1 – ON
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENT A: MEET THE LOGIC GATES -->
+    <section class="section-wrapper" id="explore-gates">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Digital Components</span>
+          <h2 class="section-title">Meet the Logic Gates</h2>
+          <p class="section-desc">
+            Explore the six fundamental building blocks of digital computing. Click any card to launch its dedicated simulation laboratory.
+          </p>
+        </div>
+
+        <div class="gates-grid">
+          <!-- 1. AND Gate Card -->
+          <a href="pages/and.html" class="gate-card" aria-label="Open AND Gate Simulator">
+            <div class="gate-card-top">
+              <h3 class="gate-card-title">AND Gate</h3>
+              <span class="gate-card-type-badge">2 Inputs</span>
+            </div>
+            <div class="gate-card-symbol-frame">
+              <svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid meet">
+                <path d="M 40 40 L 70 40 M 40 80 L 70 80" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+                <path d="M 70 20 L 115 20 A 40 40 0 0 1 115 100 L 70 100 Z" fill="#111C30" stroke="#38BDF8" stroke-width="3.5" />
+                <path d="M 155 60 L 195 60" stroke="#22C55E" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="gate-card-expr">Y = A · B</div>
+            <p class="gate-card-desc">Output is HIGH only when both inputs A and B are HIGH.</p>
+            <div class="gate-card-action">
+              <span>Open Simulator</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <!-- 2. OR Gate Card -->
+          <a href="pages/or.html" class="gate-card" aria-label="Open OR Gate Simulator">
+            <div class="gate-card-top">
+              <h3 class="gate-card-title">OR Gate</h3>
+              <span class="gate-card-type-badge">2 Inputs</span>
+            </div>
+            <div class="gate-card-symbol-frame">
+              <svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid meet">
+                <path d="M 40 40 L 74 40 M 40 80 L 74 80" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+                <path d="M 65 20 Q 90 60 65 100 Q 115 97 150 60 Q 115 23 65 20 Z" fill="#111C30" stroke="#38BDF8" stroke-width="3.5" />
+                <path d="M 150 60 L 195 60" stroke="#22C55E" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="gate-card-expr">Y = A + B</div>
+            <p class="gate-card-desc">Output is HIGH if at least one input (A or B) is HIGH.</p>
+            <div class="gate-card-action">
+              <span>Open Simulator</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <!-- 3. NOT Gate Card -->
+          <a href="pages/not.html" class="gate-card" aria-label="Open NOT Gate Simulator">
+            <div class="gate-card-top">
+              <h3 class="gate-card-title">NOT Gate</h3>
+              <span class="gate-card-type-badge">1 Input Inverter</span>
+            </div>
+            <div class="gate-card-symbol-frame">
+              <svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid meet">
+                <path d="M 40 60 L 75 60" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+                <polygon points="75,20 135,60 75,100" fill="#111C30" stroke="#38BDF8" stroke-width="3.5" />
+                <circle cx="143" cy="60" r="7" fill="#111C30" stroke="#38BDF8" stroke-width="3" />
+                <path d="M 150 60 L 195 60" stroke="#22C55E" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="gate-card-expr">Y = Ā</div>
+            <p class="gate-card-desc">Output is the inverted negation of the single binary input.</p>
+            <div class="gate-card-action">
+              <span>Open Simulator</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <!-- 4. NAND Gate Card -->
+          <a href="pages/nand.html" class="gate-card" aria-label="Open NAND Gate Simulator">
+            <div class="gate-card-top">
+              <h3 class="gate-card-title">NAND Gate</h3>
+              <span class="gate-card-type-badge">Universal Gate</span>
+            </div>
+            <div class="gate-card-symbol-frame">
+              <svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid meet">
+                <path d="M 35 40 L 65 40 M 35 80 L 65 80" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+                <path d="M 65 20 L 110 20 A 40 40 0 0 1 110 100 L 65 100 Z" fill="#111C30" stroke="#38BDF8" stroke-width="3.5" />
+                <circle cx="158" cy="60" r="7" fill="#111C30" stroke="#38BDF8" stroke-width="3" />
+                <path d="M 165 60 L 200 60" stroke="#22C55E" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="gate-card-expr">Y = (A · B)'</div>
+            <p class="gate-card-desc">Output is LOW only when both inputs are HIGH. Inverted AND gate.</p>
+            <div class="gate-card-action">
+              <span>Open Simulator</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <!-- 5. NOR Gate Card -->
+          <a href="pages/nor.html" class="gate-card" aria-label="Open NOR Gate Simulator">
+            <div class="gate-card-top">
+              <h3 class="gate-card-title">NOR Gate</h3>
+              <span class="gate-card-type-badge">Universal Gate</span>
+            </div>
+            <div class="gate-card-symbol-frame">
+              <svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid meet">
+                <path d="M 35 40 L 68 40 M 35 80 L 68 80" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+                <path d="M 60 20 Q 85 60 60 100 Q 110 97 145 60 Q 110 23 60 20 Z" fill="#111C30" stroke="#38BDF8" stroke-width="3.5" />
+                <circle cx="153" cy="60" r="7" fill="#111C30" stroke="#38BDF8" stroke-width="3" />
+                <path d="M 160 60 L 200 60" stroke="#22C55E" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="gate-card-expr">Y = (A + B)'</div>
+            <p class="gate-card-desc">Output is HIGH only when both inputs are LOW. Inverted OR gate.</p>
+            <div class="gate-card-action">
+              <span>Open Simulator</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <!-- 6. XOR Gate Card -->
+          <a href="pages/xor.html" class="gate-card" aria-label="Open XOR Gate Simulator">
+            <div class="gate-card-top">
+              <h3 class="gate-card-title">XOR Gate</h3>
+              <span class="gate-card-type-badge">Exclusive OR</span>
+            </div>
+            <div class="gate-card-symbol-frame">
+              <svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid meet">
+                <path d="M 35 40 L 62 40 M 35 80 L 62 80" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+                <path d="M 52 20 Q 77 60 52 100" fill="none" stroke="#38BDF8" stroke-width="3.5" stroke-linecap="round" />
+                <path d="M 65 20 Q 90 60 65 100 Q 115 97 150 60 Q 115 23 65 20 Z" fill="#111C30" stroke="#38BDF8" stroke-width="3.5" />
+                <path d="M 150 60 L 195 60" stroke="#22C55E" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="gate-card-expr">Y = A ⊕ B</div>
+            <p class="gate-card-desc">Output is HIGH when inputs are strictly different (0,1 or 1,0).</p>
+            <div class="gate-card-action">
+              <span>Open Simulator</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENT B: INTERACTIVE TRUTH TABLE PREVIEW -->
+    <section class="section-wrapper">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Interactive Logic Matrix</span>
+          <h2 class="section-title">Understand the Truth Table</h2>
+          <p class="section-desc">
+            Every possible combination of binary inputs produces a specific output according to the logic gate's Boolean expression.
+          </p>
+        </div>
+
+        <div class="truth-preview-card">
+          <div class="truth-preview-grid">
+            <!-- Left Side: Interactive Table -->
+            <div class="tt-preview-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Input A</th>
+                    <th>Input B</th>
+                    <th>Output Y (A · B)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="tt-preview-row" data-a="0" data-b="0">
+                    <td><span class="bit-badge bit-0">0</span></td>
+                    <td><span class="bit-badge bit-0">0</span></td>
+                    <td><span class="bit-badge bit-0">0</span></td>
+                  </tr>
+                  <tr class="tt-preview-row" data-a="0" data-b="1">
+                    <td><span class="bit-badge bit-0">0</span></td>
+                    <td><span class="bit-badge bit-1">1</span></td>
+                    <td><span class="bit-badge bit-0">0</span></td>
+                  </tr>
+                  <tr class="tt-preview-row" data-a="1" data-b="0">
+                    <td><span class="bit-badge bit-1">1</span></td>
+                    <td><span class="bit-badge bit-0">0</span></td>
+                    <td><span class="bit-badge bit-0">0</span></td>
+                  </tr>
+                  <tr class="tt-preview-row selected-preview-row" data-a="1" data-b="1">
+                    <td><span class="bit-badge bit-1">1</span></td>
+                    <td><span class="bit-badge bit-1">1</span></td>
+                    <td><span class="bit-badge bit-1">1</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Right Side: Explanatory Context -->
+            <div class="truth-preview-expl">
+              <h3>Live Truth Table Inspector</h3>
+              <p>
+                Click any row in the table to test the input vector. A digital truth table maps exhaustive binary state combinations to evaluate how Boolean operations govern computational decisions.
+              </p>
+
+              <div class="selected-state-readout">
+                <div class="readout-vals">
+                  <span>A = <strong id="tt-preview-a-val">1</strong></span>
+                  <span>B = <strong id="tt-preview-b-val">1</strong></span>
+                  <span class="readout-arrow">➔</span>
+                  <span>Y = <strong id="tt-preview-y-val" class="preview-y-badge badge-high">1</strong></span>
+                </div>
+                <div id="tt-preview-status">
+                  <span class="status-indicator-tag tag-success">HIGH (1) - Output Satisfied</span>
+                </div>
+              </div>
+
+              <div>
+                <a href="#explore-gates" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">
+                  <span>Explore All Truth Tables</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENT C: LIVE CIRCUIT PREVIEW -->
+    <section class="section-wrapper">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Real-Time Simulation</span>
+          <h2 class="section-title">Live Circuit Preview</h2>
+          <p class="section-desc">
+            Toggle switches in real time. Watch electrical signals propagate across input traces, trigger gate logic, and illuminate the output LED.
+          </p>
+        </div>
+
+        <div class="live-preview-box">
+          <div class="live-preview-grid">
+            <!-- Left: Mini Simulation -->
+            <div class="live-circuit-canvas-wrap">
+              <svg viewBox="0 0 460 200" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <filter id="lpCyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                    <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lpGreenGlow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="4.5" result="blur" />
+                    <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <radialGradient id="lpLedOnGrad" cx="40%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#86EFAC" />
+                    <stop offset="35%" stop-color="#22C55E" />
+                    <stop offset="100%" stop-color="#052E16" />
+                  </radialGradient>
+                </defs>
+
+                <!-- Input A Trace -->
+                <path id="lp-wire-a" d="M 40 75 L 130 75" stroke="#334155" stroke-width="4.5" stroke-linecap="round" />
+                <circle id="lp-pulse-a" r="4" fill="#FFFFFF" style="display:none;">
+                  <animateMotion path="M 40 75 L 130 75" dur="1.2s" repeatCount="indefinite" />
+                </circle>
+
+                <!-- Input B Trace -->
+                <path id="lp-wire-b" d="M 40 125 L 130 125" stroke="#38BDF8" stroke-width="4.5" stroke-linecap="round" filter="url(#lpCyanGlow)" />
+                <circle id="lp-pulse-b" r="4" fill="#FFFFFF">
+                  <animateMotion path="M 40 125 L 130 125" dur="1.2s" repeatCount="indefinite" />
+                </circle>
+
+                <!-- AND Gate -->
+                <g transform="translate(10, -5)">
+                  <path d="M 120 70 L 175 70 A 45 45 0 0 1 175 160 L 120 160 Z" fill="#111C30" stroke="#38BDF8" stroke-width="3" stroke-linejoin="round" />
+                  <text x="150" y="120" text-anchor="middle" fill="#94A3B8" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700">AND</text>
+                </g>
+
+                <!-- Output Wire -->
+                <path id="lp-wire-out" d="M 230 100 L 340 100" stroke="#334155" stroke-width="4.5" stroke-linecap="round" />
+                <circle id="lp-pulse-out" r="4" fill="#FFFFFF" style="display:none;">
+                  <animateMotion path="M 230 100 L 340 100" dur="1.0s" repeatCount="indefinite" />
+                </circle>
+
+                <!-- Output LED -->
+                <g transform="translate(365, 100)">
+                  <circle cx="0" cy="0" r="22" fill="#1E293B" stroke="#475569" stroke-width="2.5" />
+                  <circle cx="0" cy="0" r="16" fill="#0F172A" />
+                  <circle id="lp-led" cx="0" cy="0" r="14" fill="#334155" />
+                  <ellipse cx="-3" cy="-4" rx="4" ry="2.5" fill="#FFFFFF" opacity="0.3" />
+                  <circle id="lp-led-glow" cx="0" cy="0" r="18" fill="none" stroke="#22C55E" stroke-width="2" opacity="0.6" style="display:none;">
+                    <animate attributeName="r" values="16;22;16" dur="2s" repeatCount="indefinite" />
+                  </circle>
+                </g>
+              </svg>
+
+              <!-- Switch buttons under canvas -->
+              <div class="live-switches-row">
+                <button type="button" class="live-sw-btn" id="lp-switch-a">
+                  <span>Input A:</span>
+                  <span class="sw-val">0</span>
+                  <span class="sw-status">LOW</span>
+                </button>
+                <button type="button" class="live-sw-btn active-switch" id="lp-switch-b">
+                  <span>Input B:</span>
+                  <span class="sw-val">1</span>
+                  <span class="sw-status">HIGH</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Live Circuit Explanation & Action -->
+            <div class="live-expl-panel">
+              <span id="lp-output-label" class="lp-status-badge badge-off">Y = 0 (OFF - LOW)</span>
+              <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--text-main);">
+                Instant Boolean Evaluation
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                Notice that with A = 0 and B = 1, the output wire remains inactive and the LED is unlit. Toggle Switch A to 1 to complete the Boolean condition (1 · 1 = 1) and activate the circuit.
+              </p>
+              <div style="margin-top: 8px;">
+                <a href="pages/and.html" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">
+                  <span>Try the Full Simulation</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENT D: BINARY SIGNAL VISUALISATION -->
+    <section class="section-wrapper">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Signal Fundamentals</span>
+          <h2 class="section-title">How Binary Signals Work</h2>
+          <p class="section-desc">
+            Digital systems communicate using two fundamental states: 0 (LOW) and 1 (HIGH). Logic gates process these binary signals to produce meaningful outputs.
+          </p>
+        </div>
+
+        <div class="waveform-section-card">
+          <!-- Canvas for real-time digital oscilloscope waveform -->
+          <div class="waveform-canvas-container">
+            <canvas id="waveform-canvas" width="900" height="190"></canvas>
+          </div>
+
+          <div class="waveform-controls-bar">
+            <div class="waveform-bit-editor">
+              <span class="bit-editor-label">Toggle Bitstream Data:</span>
+              <button type="button" class="btn-waveform-bit bit-active">1</button>
+              <button type="button" class="btn-waveform-bit">0</button>
+              <button type="button" class="btn-waveform-bit bit-active">1</button>
+              <button type="button" class="btn-waveform-bit bit-active">1</button>
+              <button type="button" class="btn-waveform-bit">0</button>
+              <button type="button" class="btn-waveform-bit">0</button>
+              <button type="button" class="btn-waveform-bit bit-active">1</button>
+              <button type="button" class="btn-waveform-bit">0</button>
+            </div>
+
+            <div>
+              <button type="button" class="btn-waveform-control" id="btn-toggle-waveform-stream">Pause Stream</button>
+            </div>
+          </div>
+
+          <div class="waveform-theory-box">
+            <strong>Electronics Principle:</strong> In TTL (Transistor-Transistor Logic) digital circuits, a binary <strong>0 (LOW)</strong> corresponds to a voltage potential close to ground (0V to 0.8V), whereas a binary <strong>1 (HIGH)</strong> corresponds to positive supply voltage (2.4V to 5.0V). Logic gates contain transistor networks that switch between these voltage thresholds in fractions of a nanosecond.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-icon-wrap" style="width:32px; height:32px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+            </svg>
+          </div>
+          <span>Logic<span class="brand-title-accent">Lab</span></span>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="pages/and.html">AND</a>
+          <a href="pages/or.html">OR</a>
+          <a href="pages/not.html">NOT</a>
+          <a href="pages/nand.html">NAND</a>
+          <a href="pages/nor.html">NOR</a>
+          <a href="pages/xor.html">XOR</a>
+          <a href="pages/compare.html">Compare Gates</a>
+          <a href="pages/circuit-builder.html">Circuit Builder</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom-line">
+        <span>LogicLab – Virtual Digital Electronics Laboratory</span>
+        <span>Computer Organization & Architecture Project</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/logic.js"></script>
+  <script src="js/simulator.js"></script>
+  <script src="js/homepage.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
