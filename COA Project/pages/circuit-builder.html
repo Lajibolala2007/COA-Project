@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circuit Builder (Advanced Simulator) – LogicLab</title>
+  <meta name="description" content="Build and experiment with multi-stage digital logic circuits. Connect gates, analyze real-time signal propagation through cascaded logic, inspect intermediate wire nodes, and generate composite truth tables.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338BDF8'><path d='M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'/></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo" aria-label="LogicLab Home">
+        <div class="brand-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+            <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            <line x1="10" y1="10" x2="14" y2="14"></line>
+          </svg>
+        </div>
+        <span>Logic<span class="brand-title-accent">Lab</span></span>
+      </a>
+
+      <nav class="nav-links" id="nav-links" aria-label="Main Navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../index.html#explore-gates" class="nav-link">Explore Gates</a>
+        <a href="compare.html" class="nav-link">Compare Gates</a>
+        <a href="circuit-builder.html" class="nav-link active-nav">Circuit Builder</a>
+      </nav>
+
+      <div class="nav-right-actions">
+        <button type="button" class="btn-theme-toggle" id="theme-toggle-btn" aria-label="Toggle Theme Mode">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-moon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="simulator-page-header">
+      <div class="sim-breadcrumb-nav">
+        <a href="../index.html">← Back to Home</a>
+        <span>/</span>
+        <strong style="color: var(--accent-cyan);">Circuit Builder</strong>
+      </div>
+
+      <div class="sim-gate-headline">
+        <div class="sim-gate-title-block">
+          <h1>Build Your Own Logic Circuit</h1>
+          <p class="sim-gate-subtitle">Design, cascade, and test multi-stage digital logic circuits. Watch signals propagate from input switches through intermediary nodes to final LED indicators.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Circuit Builder Application Target -->
+    <div id="circuit-builder-app"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-icon-wrap" style="width:32px; height:32px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+            </svg>
+          </div>
+          <span>Logic<span class="brand-title-accent">Lab</span></span>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="../index.html">Home</a>
+          <a href="and.html">AND</a>
+          <a href="or.html">OR</a>
+          <a href="not.html">NOT</a>
+          <a href="nand.html">NAND</a>
+          <a href="nor.html">NOR</a>
+          <a href="xor.html">XOR</a>
+          <a href="compare.html">Compare Gates</a>
+          <a href="circuit-builder.html">Circuit Builder</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom-line">
+        <span>LogicLab – Virtual Digital Electronics Laboratory</span>
+        <span>Computer Organization & Architecture Project</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/logic.js"></script>
+  <script src="../js/simulator.js"></script>
+  <script src="../js/circuit-builder.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
+
